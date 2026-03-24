@@ -43,6 +43,8 @@ export async function fetchLatestInvoices() {
       ...invoice,
       amount: formatCurrency(invoice.amount),
     }));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
     return latestInvoices;
   } catch (error) {
     console.error('Database Error:', error);
@@ -159,7 +161,7 @@ export async function fetchInvoiceById(id: string) {
       // Convert amount from cents to dollars
       amount: invoice.amount / 100,
     }));
-
+console.log(invoice)
     return invoice[0];
   } catch (error) {
     console.error('Database Error:', error);
